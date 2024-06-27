@@ -9,8 +9,8 @@ RUN rm -rf /etc/pacman.d/gnupg
 
 # create builder user/group first, to be consistent throughout docker variants
 RUN set -x \
-    && groupadd --system --gid 999 builder \
-    && useradd --system -g builder -M --shell /bin/nologin --uid 999 builder \
+    && groupadd --system --gid 101 builder \
+    && useradd --system -g builder -M --shell /bin/nologin --uid 101 builder \
     && mkdir -p /home/builder \
     && chown -R builder:builder /home/builder
 

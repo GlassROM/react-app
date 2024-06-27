@@ -5,7 +5,7 @@ services:
     image: ghcr.io/glassrom/react-app:master
     #read_only: true
     container_name: reactapp
-    user: "999:999"
+    user: "101:101"
     security_opt:
       - no-new-privileges:true
     cap_drop:
@@ -18,7 +18,7 @@ services:
     restart: always
     networks:
       - reactapp_net
-    #runtime: runsc
+    runtime: runsc
 
 networks:
   reactapp_net:
