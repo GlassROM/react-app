@@ -7,7 +7,13 @@ RUN pacman -Syyuu nodejs npm pm2 git --needed --noconfirm
 RUN yes | pacman -Scc
 RUN rm -rf /etc/pacman.d/gnupg
 
-RUN useradd -m builder
+# create builder user/group first, to be consistent throughout docker variants
+RUN set -x \
+    && groupadd --system --gid 999 builder \
+    && useradd --system -g builder -M --shell /bin/nologin --uid 999 builder \
+    && mkdir -p /home/builder \
+    && chown -R builder:builder /home/builder
+
 WORKDIR /home/builder
 USER builder
 

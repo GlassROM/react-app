@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  reactapp:
+    image: ghcr.io/glassrom/react-app:master
+    #read_only: true
+    container_name: reactapp
+    user: "999:999"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    ports:
+      - "3000:3000/tcp"
+    pull_policy: always
+    tmpfs:
+      - /tmp
+    restart: always
+    networks:
+      - reactapp_net
+    #runtime: runsc
+
+networks:
+  reactapp_net:
