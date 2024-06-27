@@ -15,8 +15,6 @@ COPY --chown=builder:builder . /home/builder/react-app
 WORKDIR /home/builder/react-app
 RUN npm i && npm run build
 
-WORKDIR /home/builder/react-app/dist
-
 EXPOSE 3000
 CMD ["npm", "start"]
 
