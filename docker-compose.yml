@@ -18,7 +18,7 @@ services:
     restart: always
     networks:
       - reactapp_net
-    runtime: runsc
+    runtime: runsc-host-network
 
 networks:
   reactapp_net:
